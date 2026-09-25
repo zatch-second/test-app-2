@@ -2,7 +2,7 @@ pipeline{
     agent{
         docker{
             image 'custom-jenkins-agent'
-            args '-v /var/run/docker.sock:/var/rundocker.sock -v ~/.kube:/root/.kube -u root -e KUBECONFIG=/root/.kube/config --network host'
+            args '-v /var/run/docker.sock:/var/run/docker.sock -v /home/zatch/.kube:/root/.kube -u root -e KUBECONFIG=/root/.kube/config --network host'
         }
     }
     stages{
