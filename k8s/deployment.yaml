@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+        version: blue
+    spec:
+      containers:
+      - name: dashboard-app
+        image: dashboard:latest
+        imagePullPolicy: Never # Crucial for KinD local images
+        ports:
+        - containerPort: 8000
+        env:
+        - name: BG_COLOR
+          value: "blue"
